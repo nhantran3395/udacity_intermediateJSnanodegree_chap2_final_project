@@ -4,7 +4,115 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dinosaurs</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <title>Dinographic</title>
   </head>
-  <body></body>
+  <body class="d-flex vh-100 flex-row">
+    <div
+      class="d-flex justify-content-center align-items-center vh-100 w-25 flex-column"
+      style="background-color: black"
+    >
+      <h3 class="mb-3" style="color: white">National History Museum</h3>
+
+      <h1 class="mb-3" style="color: white">DINOSAURS</h1>
+
+      <span style="color: white">How do you compare?</span>
+
+      <div class="w-50 h-50">
+        <form action="#" method="POST">
+          <div class="mb-3">
+            <label for="user-name" class="form-label" style="color: white"
+              >Name</label
+            >
+            <input
+              type="input"
+              class="form-control"
+              name="user-name"
+              id="user-name"
+              maxlength="20"
+              required
+            />
+          </div>
+
+          <div class="row mb-3">
+            <span class="form-label" style="color: white">Height</span>
+            <div class="col">
+              <label
+                for="user-height-feet"
+                class="form-label"
+                style="color: white"
+                >Feet</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                name="user-height-feet"
+                id="user-height-feet"
+                required
+              />
+            </div>
+            <div class="col">
+              <label
+                for="user-height-inches"
+                class="form-label"
+                style="color: white"
+                >Inches</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                name="user-height-inches"
+                id="user-height-inches"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="user-weight" class="form-label" style="color: white"
+              >Weight</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="user-weight"
+              id="user-weight"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="user-diet" class="form-label" style="color: white"
+              >Diet</label
+            >
+            <select class="form-select">
+              <option value="1">Herbavor</option>
+              <option value="2">Omnivor</option>
+              <option value="3">Carnivo</option>
+            </select>
+          </div>
+        </form>
+
+        <button type="submit" class="btn btn-primary mt-4" id="button-login">
+          Compare Me!
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center vh-100 w-75 flex-column"
+    >
+      <img
+        src="./images/dinosaur_bg.jpg"
+        class="img-fluid"
+        style="height: 100%"
+        alt="Dinosaur skeleton"
+      />
+    </div>
+  </body>
 </html>
