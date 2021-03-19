@@ -24,7 +24,7 @@
       <span style="color: white">How do you compare?</span>
 
       <div class="w-50 h-50">
-        <form action="#" method="POST">
+        <form name="user-info">
           <div class="mb-3">
             <label for="user-name" class="form-label" style="color: white"
               >Name</label
@@ -90,17 +90,17 @@
             <label for="user-diet" class="form-label" style="color: white"
               >Diet</label
             >
-            <select class="form-select">
-              <option value="1">Herbavor</option>
-              <option value="2">Omnivor</option>
-              <option value="3">Carnivo</option>
+            <select class="form-select" id="user-diet" name="user-diet">
+              <option value="herbavor">Herbavor</option>
+              <option value="omnivor">Omnivor</option>
+              <option value="carnivo">Carnivo</option>
             </select>
           </div>
-        </form>
 
-        <button type="submit" class="btn btn-primary mt-4" id="button-login">
-          Compare Me!
-        </button>
+          <button type="submit" class="btn btn-primary mt-4" id="button-login">
+            Compare Me!
+          </button>
+        </form>
       </div>
     </div>
 
@@ -115,4 +115,6 @@
       />
     </div>
   </body>
+
+  <script src="./app.js"></script>
 </html>
