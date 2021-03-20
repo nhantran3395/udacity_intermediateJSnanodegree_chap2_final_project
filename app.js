@@ -44,9 +44,10 @@ function Human(name, heightFeet, heightInches, weight, diet) {
   })(heightFeet, heightInches)
 
   return {
+    species: "Human",
     name: name,
     height: height,
-    weight: weight,
+    weight: Number(weight),
     diet: diet,
   }
 }
