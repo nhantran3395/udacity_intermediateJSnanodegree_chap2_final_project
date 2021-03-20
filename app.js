@@ -47,4 +47,5 @@ formUserInfo.addEventListener("submit", function (event) {
   document.getElementById("form-user-try-again").style.removeProperty("display")
   document.getElementById("image-background-dinosaur-skeleton").style.display =
     "none"
+  document.getElementById("card-group").style.removeProperty("display")
 })
