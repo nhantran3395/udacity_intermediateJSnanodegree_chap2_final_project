@@ -1,47 +1,48 @@
 console.log("dinosaur rocks!")
 
-const form = document.forms["user-info"]
+const human = (function () {
+  let _name
+  let _height
+  let _weight
+  let _diet
 
-form.addEventListener("submit", function (event) {
+  function getName() {
+    return _name
+  }
+
+  function getHeight() {
+    return _height
+  }
+
+  function getWeight() {
+    return _weight
+  }
+
+  function getDiet() {
+    return _diet
+  }
+
+  return {
+    name: getName(),
+    height: getHeight(),
+    weight: getWeight(),
+    diet: getDiet(),
+  }
+})()
+
+const formUserInfo = document.forms["user-info"]
+
+formUserInfo.addEventListener("submit", function (event) {
   event.preventDefault()
   const formData = new FormData(this)
   const entries = formData.entries()
   const data = Object.fromEntries(entries)
 
-  const userName = data["user-name"]
-  const userHeight = data["user-height-feet"]
-  const userWeight = data["user-weight"]
-  const userDiet = data["user-diet"]
+  human.name = data["user-name"]
+  human.height = data["user-height-feet"]
+  human.weight = data["user-weight"]
+  human.diet = data["user-diet"]
 
-  const human = (function () {
-    let _name = userName
-    let _height = userHeight
-    let _weight = userWeight
-    let _diet = userDiet
-
-    function getName() {
-      return _name
-    }
-
-    function getHeight() {
-      return _height
-    }
-
-    function getWeight() {
-      return _weight
-    }
-
-    function getDiet() {
-      return _diet
-    }
-
-    return {
-      name: getName(),
-      height: getHeight(),
-      weight: getWeight(),
-      diet: getDiet(),
-    }
-  })()
-
-  console.log(human)
+  formUserInfo.remove()
+  document.getElementById("form-user-try-again").style.removeProperty("display")
 })

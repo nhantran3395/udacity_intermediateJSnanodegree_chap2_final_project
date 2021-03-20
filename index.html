@@ -24,16 +24,16 @@
       <span style="color: white">How do you compare?</span>
 
       <div class="w-50 h-50">
-        <form name="user-info">
+        <form name="user-info" id="form-user-info">
           <div class="mb-3">
-            <label for="user-name" class="form-label" style="color: white"
+            <label for="input-user-name" class="form-label" style="color: white"
               >Name</label
             >
             <input
               type="input"
               class="form-control"
               name="user-name"
-              id="user-name"
+              id="input-user-name"
               maxlength="20"
               required
             />
@@ -43,7 +43,7 @@
             <span class="form-label" style="color: white">Height</span>
             <div class="col">
               <label
-                for="user-height-feet"
+                for="input-user-height-feet"
                 class="form-label"
                 style="color: white"
                 >Feet</label
@@ -52,13 +52,13 @@
                 type="number"
                 class="form-control"
                 name="user-height-feet"
-                id="user-height-feet"
+                id="input-user-height-feet"
                 required
               />
             </div>
             <div class="col">
               <label
-                for="user-height-inches"
+                for="input-user-height-inches"
                 class="form-label"
                 style="color: white"
                 >Inches</label
@@ -67,39 +67,65 @@
                 type="number"
                 class="form-control"
                 name="user-height-inches"
-                id="user-height-inches"
+                id="input-user-height-inches"
                 required
               />
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="user-weight" class="form-label" style="color: white"
+            <label
+              for="input-user-weight"
+              class="form-label"
+              style="color: white"
               >Weight</label
             >
             <input
               type="number"
               class="form-control"
               name="user-weight"
-              id="user-weight"
+              id="input-user-weight"
               required
             />
             <span style="color: white">lbs</span>
           </div>
 
           <div class="mb-3">
-            <label for="user-diet" class="form-label" style="color: white"
+            <label for="input-user-diet" class="form-label" style="color: white"
               >Diet</label
             >
-            <select class="form-select" id="user-diet" name="user-diet">
+            <select class="form-select" id="input-user-diet" name="user-diet">
               <option value="herbavor">Herbavor</option>
               <option value="omnivor">Omnivor</option>
               <option value="carnivo">Carnivo</option>
             </select>
           </div>
 
-          <button type="submit" class="btn btn-primary mt-4" id="button-login">
+          <button
+            type="submit"
+            class="btn btn-primary mt-4"
+            id="button-user-compare-me"
+          >
             Compare Me!
+          </button>
+        </form>
+
+        <form
+          name="user-try-again"
+          id="form-user-try-again"
+          style="display: none"
+          class="mt-3"
+        >
+          <p style="color: white">
+            Great! Let see how you compare with our dinosaurs
+          </p>
+
+          <button
+            type="submit"
+            class="btn btn-primary mt-3"
+            id="button-user-compare-me"
+          >
+            Wanna try again?
           </button>
         </form>
       </div>
