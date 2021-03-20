@@ -45,4 +45,6 @@ formUserInfo.addEventListener("submit", function (event) {
 
   formUserInfo.remove()
   document.getElementById("form-user-try-again").style.removeProperty("display")
+  document.getElementById("image-background-dinosaur-skeleton").style.display =
+    "none"
 })
