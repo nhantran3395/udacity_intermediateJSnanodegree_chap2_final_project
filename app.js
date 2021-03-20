@@ -80,13 +80,31 @@ formUserInfo.addEventListener("submit", function (event) {
 
   const bird = Bird(dinos.find((dino) => dino.species == "Pigeon"))
 
-  console.log(human)
-  console.log(dinosaurs)
-  console.log(bird)
+  //store bird and dinosaurs in new array then shuffle
+  const dinosaursBird = dinosaurs.concat(bird).sort(() => Math.random() - 0.5)
 
   formUserInfo.remove()
+
   document.getElementById("form-user-try-again").style.removeProperty("display")
   document.getElementById("image-background-dinosaur-skeleton").style.display =
     "none"
   document.getElementById("card-group").style.removeProperty("display")
+
+  document.getElementById("card-title-human").textContent = human.name
+
+  dinosaursBird.forEach((animal, idx) => {
+    document.getElementById(`card-title-${idx + 1}`).textContent =
+      animal.species
+
+    document
+      .getElementById(`card-img-${idx + 1}`)
+      .setAttribute("src", `./images/${animal.species.toLowerCase()}.png`)
+
+    if (animal.fact) {
+      document.getElementById(`card-text-${idx + 1}`).textContent = animal.fact
+    } else if (animal.facts) {
+      document.getElementById(`card-text-${idx + 1}`).textContent =
+        animal.facts[0]
+    }
+  })
 })
