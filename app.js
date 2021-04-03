@@ -85,6 +85,8 @@ function Dinosaur(animal) {
   };
 
   facts[0] = fact;
+  facts.push(`${species} live on Earth in ${when}`);
+  facts.push(`${species} can be found in ${where}`);
 
   return {
     species,
