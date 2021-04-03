@@ -1,13 +1,29 @@
 const MAX_NUM_DINO_FACT = 6;
 
+/**
+ * @description Calculate the ratio of num1 to num2
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {number} Ratio of num1 to num2
+ */
 function ratioCalculatorUtil(num1, num2) {
   return (num1 / num2).toFixed(3);
 }
 
+/**
+ * @description Get a random integer in range of 0 to max
+ * @param {number} max
+ * @returns {number} Random integer
+ */
 function getRandomIntUtil(max) {
   return Math.floor(Math.random() * max);
 }
 
+/**
+ * @description Remove input form, hide background image, show card group
+ * @param none
+ * @returns none
+ */
 function setUpAfterUserSumbit() {
   const formUserTryAgain = document.getElementById('form-user-try-again');
   formUserTryAgain.style.removeProperty('display');
@@ -21,6 +37,11 @@ function setUpAfterUserSumbit() {
   cardGroup.style.removeProperty('display');
 }
 
+/**
+ * @description Prepare data that will be display on each card
+ * @param none
+ * @returns none
+ */
 function prepareCardData(animal, idx) {
   const { species, weight, height, diet, where, when, facts } = animal;
 
@@ -52,6 +73,11 @@ function prepareCardData(animal, idx) {
   cardPopover.setAttribute('data-bs-original-title', species);
 }
 
+/**
+ * @description Represents a dinosaur
+ * @constructor
+ * @param {object} animal - animal object
+ */
 function Dinosaur(animal) {
   const { species, weight, height, diet, where, when, fact } = animal;
   const facts = [];
@@ -103,6 +129,11 @@ function Dinosaur(animal) {
   };
 }
 
+/**
+ * @description Represents a bird
+ * @constructor
+ * @param {object} animal - animal object
+ */
 function Bird(animal) {
   const { species, weight, height, diet, where, when, fact } = animal;
 
@@ -117,6 +148,14 @@ function Bird(animal) {
   };
 }
 
+/**
+ * @description Represents a human
+ * @constructor
+ * @param {string} name - user name
+ * @param {number} heightFeet - height in feet
+ * @param {number} heightInches - height in inches
+ * @param {string} diet - user 's diet
+ */
 function Human(name, heightFeet, heightInches, weight, diet) {
   const height = (function getUserHeightInFeet() {
     const inchToFeetMultiplier = 0.0833333333;
