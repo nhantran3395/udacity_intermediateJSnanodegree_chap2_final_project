@@ -1,0 +1,29 @@
+{
+  "name": "udacity_intermediatejsnanodegree_chap2_final_project",
+  "version": "1.0.0",
+  "description": "udacity intermediate javascript nanodegree chapter 2 final project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tranthanhnhan3395/udacity_intermediateJSnanodegree_chap2_final_project.git"
+  },
+  "author": "Nhan Thanh Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tranthanhnhan3395/udacity_intermediateJSnanodegree_chap2_final_project/issues"
+  },
+  "homepage": "https://github.com/tranthanhnhan3395/udacity_intermediateJSnanodegree_chap2_final_project#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  }
+}
