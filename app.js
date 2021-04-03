@@ -29,7 +29,7 @@ function Bird(animal) {
     diet: diet,
     where: where,
     when: when,
-    fact: fact,
+    facts: fact,
   }
 }
 
@@ -85,26 +85,55 @@ formUserInfo.addEventListener("submit", function (event) {
 
   formUserInfo.remove()
 
-  document.getElementById("form-user-try-again").style.removeProperty("display")
-  document.getElementById("image-background-dinosaur-skeleton").style.display =
-    "none"
-  document.getElementById("card-group").style.removeProperty("display")
+  setUpAfterUserSumbit()
 
-  document.getElementById("card-title-human").textContent = human.name
+  const cardTitleHuman = document.getElementById("card-title-human")
+  cardTitleHuman.textContent = human.name
 
+  //prepare card data for each dinosaur and bird
   dinosaursBird.forEach((animal, idx) => {
-    document.getElementById(`card-title-${idx + 1}`).textContent =
-      animal.species
-
-    document
-      .getElementById(`card-img-${idx + 1}`)
-      .setAttribute("src", `./images/${animal.species.toLowerCase()}.png`)
-
-    if (animal.fact) {
-      document.getElementById(`card-text-${idx + 1}`).textContent = animal.fact
-    } else if (animal.facts) {
-      document.getElementById(`card-text-${idx + 1}`).textContent =
-        animal.facts[0]
-    }
+    prepareCardData(animal, idx)
   })
 })
+
+function setUpAfterUserSumbit() {
+  const formUserTryAgain = document.getElementById("form-user-try-again")
+  formUserTryAgain.style.removeProperty("display")
+
+  const backgroundImg = document.getElementById(
+    "image-background-dinosaur-skeleton"
+  )
+  backgroundImg.style.display = "none"
+
+  const cardGroup = document.getElementById("card-group")
+  cardGroup.style.removeProperty("display")
+}
+
+function prepareCardData(animal, idx) {
+  const { species, weight, height, diet, where, when, facts } = animal
+
+  //card title
+  const cardTitle = document.getElementById(`card-title-${idx + 1}`)
+  cardTitle.textContent = species
+
+  //card img
+  const cardImg = document.getElementById(`card-img-${idx + 1}`)
+  cardImg.setAttribute("src", `./images/${animal.species.toLowerCase()}.png`)
+
+  //card text
+  const cardText = document.getElementById(`card-text-${idx + 1}`)
+  cardText.textContent = Array.isArray(facts) ? facts[0] : facts
+
+  //card popover
+  const cardPopover = document.getElementById(`card-button-${idx + 1}`)
+
+  const contentsInPopover =
+    `weight: ${weight} <br>` +
+    `height: ${height} <br>` +
+    `diet: ${diet} <br>` +
+    `where: ${where} <br>` +
+    `when: ${when} <br>`
+
+  cardPopover.setAttribute("data-bs-content", contentsInPopover)
+  cardPopover.setAttribute("data-bs-original-title", species)
+}
