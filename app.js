@@ -4,18 +4,50 @@ const MAX_NUM_DINO_FACT = 6
 
 function Dinosaur(animal) {
   let { species, weight, height, diet, where, when, fact } = animal
-  let _facts = new Array(MAX_NUM_DINO_FACT)
+  let _facts = new Array()
 
   _facts[0] = fact
 
+  const getWeightComparisionWithHuman = (humanWeight) => {
+    const ratio = ratioCalculatorUtil(weight, humanWeight)
+    return `${species} weight ${ratio} times more than you`
+  }
+
+  const getHeightComparisionWithHuman = (humanHeight) => {
+    const ratio = ratioCalculatorUtil(height, humanHeight)
+    return `${species} weight ${ratio} times more than you`
+  }
+
+  const getDietComparisonWithHuman = (humanDiet) => {
+    let comparision = ""
+
+    if (diet === humanDiet) {
+      comparision = `${species} share the same diet with you`
+    } else {
+      comparision = `${species} is a ${diet}, while you are a ${humanDiet}`
+    }
+
+    return comparision
+  }
+
+  const putFact = (fact) => {
+    if (_facts.length < MAX_NUM_DINO_FACT) {
+      _facts.push(fact)
+    }
+  }
+
   return {
-    species: species,
-    weight: weight,
-    height: height,
-    diet: diet,
-    where: where,
-    when: when,
+    species,
+    weight,
+    height,
+    diet,
+    where,
+    when,
     facts: _facts,
+    getWeightComparisionWithHuman,
+    getHeightComparisionWithHuman,
+    getDietComparisonWithHuman,
+    putFact,
   }
 }
 
@@ -23,12 +55,12 @@ function Bird(animal) {
   let { species, weight, height, diet, where, when, fact } = animal
 
   return {
-    species: species,
-    weight: weight,
-    height: height,
-    diet: diet,
-    where: where,
-    when: when,
+    species,
+    weight,
+    height,
+    diet,
+    where,
+    when,
     facts: fact,
   }
 }
@@ -78,6 +110,18 @@ formUserInfo.addEventListener("submit", function (event) {
     .filter((dino) => dino.species != "Pigeon")
     .map((dino) => Dinosaur(dino))
 
+  dinosaurs.forEach((dinosaur) => {
+    const {
+      putFact,
+      getWeightComparisionWithHuman,
+      getHeightComparisionWithHuman,
+      getDietComparisonWithHuman,
+    } = dinosaur
+    putFact(getWeightComparisionWithHuman(human.weight))
+    putFact(getHeightComparisionWithHuman(human.height))
+    putFact(getDietComparisonWithHuman(human.diet))
+  })
+
   const bird = Bird(dinos.find((dino) => dino.species == "Pigeon"))
 
   //store bird and dinosaurs in new array then shuffle
@@ -87,8 +131,18 @@ formUserInfo.addEventListener("submit", function (event) {
 
   setUpAfterUserSumbit()
 
+  //prepare card data for human
   const cardTitleHuman = document.getElementById("card-title-human")
   cardTitleHuman.textContent = human.name
+
+  const cardPopoverHuman = document.getElementById("card-button-human")
+  const contentsInPopoverHuman =
+    `You are cool! <br>` +
+    `weight: ${human.weight} <br>` +
+    `height: ${human.height} <br>` +
+    `diet: ${human.diet} <br>`
+
+  cardPopoverHuman.setAttribute("data-bs-content", contentsInPopoverHuman)
 
   //prepare card data for each dinosaur and bird
   dinosaursBird.forEach((animal, idx) => {
@@ -122,7 +176,9 @@ function prepareCardData(animal, idx) {
 
   //card text
   const cardText = document.getElementById(`card-text-${idx + 1}`)
-  cardText.textContent = Array.isArray(facts) ? facts[0] : facts
+  cardText.textContent = Array.isArray(facts)
+    ? facts[getRandomIntUtil(MAX_NUM_DINO_FACT)]
+    : facts
 
   //card popover
   const cardPopover = document.getElementById(`card-button-${idx + 1}`)
@@ -136,4 +192,12 @@ function prepareCardData(animal, idx) {
 
   cardPopover.setAttribute("data-bs-content", contentsInPopover)
   cardPopover.setAttribute("data-bs-original-title", species)
+}
+
+function ratioCalculatorUtil(num1, num2) {
+  return (num1 / num2).toFixed(3)
+}
+
+function getRandomIntUtil(max) {
+  return Math.floor(Math.random() * max)
 }
